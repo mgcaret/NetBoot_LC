@@ -1,0 +1,9 @@
+NetBoot_LC
+*.bin
+*.r
+*.o
+*.lst 
+*.dsk
+*.po
+sshot
+
