@@ -71,6 +71,8 @@ cout      = $fded               ; character out
 setkbd    = $fe89               ; set keyboard as input
 setvid    = $fe93               ; set text screen as output
 
+clraltchar = $c00e
+
           .org  BootStart       ; code gets loaded here
 
 ; Main routine
@@ -380,7 +382,8 @@ done:     rts
           lda   #$ff
           jsr   wait          ; wait a bit so user can see message
           jmp   $faba
-:         lda   #$58          ; flashing (red) X
+:         sta   clraltchar    ; make sure alt char set is off
+          lda   #$58          ; flashing (red) X
           sta   DeathLoc      ; on screen
 hang:     bra   hang          ; hang
 .endproc
